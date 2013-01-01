@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LitJson">
-      <HintPath>..\LitJson.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\JsonNet\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -67,7 +64,6 @@
       <DependentUpon>CreateRoomDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="GDIUtils.cs" />
-    <Compile Include="Loader.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,7 +95,6 @@
     <Compile Include="TileControl.Designer.cs">
       <DependentUpon>TileControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="TileData.cs" />
     <Compile Include="Models\TileSet.cs" />
     <Compile Include="TileSetPanel.cs">
       <SubType>UserControl</SubType>
