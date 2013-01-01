@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JSONSharp</name>
+    </assembly>
+    <members>
+        <member name="T:JSONSharp.Collections.JSONObjectCollection">
+            <summary>
+            JSONObjectCollection is an unordered set of name/value pairs. An object begins 
+            with "{" (left brace) and ends with "}" (right brace). Each name is followed 
+            by ":" (colon) and the name/value pairs are separated by "," (comma).
+            </summary>
+        </member>
+        <member name="T:JSONSharp.JSONValueCollection">
+            <summary>
+            JSONValueCollection represents any collection in JSONSharp.  It is used to 
+            represent arrays of values to be contained within a JSON-compliant string of characters.
+            
+            A JSONValueCollection is itself a JSONValue object.
+            </summary>
+        </member>
+        <member name="T:JSONSharp.JSONValue">
+            <summary>
+            JSONValue represents the core object in JSONSharp.  It is used to represent values
+            to be contained within a JSON-compliant string of characters.
+            
+            A JSON value can be a string in double quotes, a number, true or false, null, an 
+            object or an array. These structures can be nested.
+            </summary>
+        </member>
+        <member name="F:JSONSharp.JSONValue.HORIZONTAL_TAB">
+            <summary>
+            Named element to represent a horizontal tab character. Used for PrettyPrint().
+            </summary>
+        </member>
+        <member name="F:JSONSharp.JSONValue.CURRENT_INDENT">
+            <summary>
+            Static counter used for PrettyPrint().
+            </summary>
+        </member>
+        <member name="M:JSONSharp.JSONValue.ToString">
+            <summary>
+            Any implementation must override the base ToString() method, used for
+            producing the contained object data in JSON-compliant form.
+            </summary>
+            <returns>The value as a string, formatted in compliance with RFC 4627.</returns>
+        </member>
+        <member name="M:JSONSharp.JSONValue.PrettyPrint">
+            <summary>
+            Any implementation must override PrettyPrint(), used for rendering the
+            contained object data in JSON-compliant form but with indentation for readability.
+            </summary>
+            <returns>The value as a string, indented for readability.</returns>
+        </member>
+        <member name="F:JSONSharp.JSONValueCollection.JSONVALUE_SEPARATOR">
+            <summary>
+            Named element for the separation character for this JSONValue object.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.JSONValueCollection.CollectionToPrettyPrint">
+            <summary>
+            Any implementation must override CollectionToPrettyPrint(), used for rendering the
+            contained object data in JSON-compliant form but with indentation for readability.
+            </summary>
+            <returns>The value as a string, indented for readability.</returns>
+        </member>
+        <member name="M:JSONSharp.JSONValueCollection.CollectionToString">
+            <summary>
+            Any implementation must override the base ToString() method, used for
+            producing the contained object data in JSON-compliant form.
+            </summary>
+            <returns>The value as a string, formatted in compliance with RFC 4627.</returns>
+        </member>
+        <member name="M:JSONSharp.JSONValueCollection.ToString">
+            <summary>
+            Required override the base ToString() method. Writes contained data using
+            the abstract CollectionToString() method, bounded by the BeginMarker and EndMarker
+            properties.
+            </summary>
+            <returns>The value as a string, formatted in compliance with RFC 4627.</returns>
+        </member>
+        <member name="M:JSONSharp.JSONValueCollection.PrettyPrint">
+            <summary>
+            Required override of PrettyPrint(). Utilizes the CollectionToPrettyPrint()
+            method, required by implementors of this class.
+            </summary>
+            <returns>The value as a string, indented for readability.</returns>
+        </member>
+        <member name="P:JSONSharp.JSONValueCollection.BeginMarker">
+            <summary>
+            Any implementation must override the BeginMarker property, used for
+            denoting the lead wrapping character for the collection type.
+            </summary>
+        </member>
+        <member name="P:JSONSharp.JSONValueCollection.EndMarker">
+            <summary>
+            Any implementation must override the EndMarker property, used for
+            denoting the trailing wrapping character for the collection type.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONObjectCollection.#ctor(System.Collections.Generic.Dictionary{JSONSharp.Values.JSONStringValue,JSONSharp.JSONValue})">
+            <summary>
+            Public constructor that accepts a Dictionary of name/value pairs.
+            </summary>
+            <param name="namevaluepairs">Dictionary collection of name/value pairs (JSONStringValue=name,JSONValue=pair)</param>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONObjectCollection.#ctor">
+            <summary>
+            Empty public constructor. Use this method in conjunction with
+            the Add method to populate the internal dictionary of name/value pairs.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONObjectCollection.Add(JSONSharp.Values.JSONStringValue,JSONSharp.JSONValue)">
+            <summary>
+            Adds a JSONStringValue as the "name" and a JSONValue as the "value" to the 
+            internal Dictionary.  Values are checked to ensure no duplication occurs 
+            in the internal Dictionary.
+            </summary>
+            <param name="name">JSONStringValue "name" to add to the internal dictionary</param>
+            <param name="value">JSONValue "value" to add to the internal dictionary</param>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONObjectCollection.CollectionToPrettyPrint">
+            <summary>
+            Required override of the CollectionToPrettyPrint() method.
+            </summary>
+            <returns>the entire dictionary as a string in JSON-compliant format, with indentation for readability</returns>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONObjectCollection.CollectionToString">
+            <summary>
+            Required override of the CollectionToString() method.
+            </summary>
+            <returns>the entire collection as a string in JSON-compliant format</returns>
+        </member>
+        <member name="P:JSONSharp.Collections.JSONObjectCollection.BeginMarker">
+            <summary>
+            Required override of the BeginMarker property
+            </summary>
+        </member>
+        <member name="P:JSONSharp.Collections.JSONObjectCollection.EndMarker">
+            <summary>
+            Required override of the EndMarker property
+            </summary>
+        </member>
+        <member name="T:JSONSharp.Values.JSONBoolValue">
+            <summary>
+            JSONBoolValue represents a boolean value in JSONSharp.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Values.JSONBoolValue.#ctor(System.Boolean)">
+            <summary>
+            Simple public instance constructor that accepts a boolean.
+            </summary>
+            <param name="value">boolean value for this instance</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONBoolValue.ToString">
+            <summary>
+            Required override of the ToString() method.
+            </summary>
+            <returns>boolean value for this instance, as text and lower-cased (either "true" or "false", without quotation marks)</returns>
+        </member>
+        <member name="M:JSONSharp.Values.JSONBoolValue.PrettyPrint">
+            <summary>
+            Required override of the PrettyPrint() method.
+            </summary>
+            <returns>this.ToString()</returns>
+        </member>
+        <member name="T:JSONSharp.Values.JSONStringValue">
+            <summary>
+            JSONStringValue is a collection of zero or more Unicode characters, wrapped in double quotes, 
+            using backslash escapes. A character is represented as a single character string. A string 
+            is very much like a C# string.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Values.JSONStringValue.#ctor(System.String)">
+            <summary>
+            Public constructor that accepts a value of type string
+            </summary>
+            <param name="value">string value</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONStringValue.ToString">
+            <summary>
+            Required override of the ToString() method.
+            </summary>
+            <returns>contained string in JSON-compliant form</returns>
+        </member>
+        <member name="M:JSONSharp.Values.JSONStringValue.PrettyPrint">
+            <summary>
+            Required override of the PrettyPrint() method.
+            </summary>
+            <returns>this.ToString()</returns>
+        </member>
+        <member name="M:JSONSharp.Values.JSONStringValue.ToJSONString(System.String)">
+            <summary>
+            Evaluates all characters in a string and returns a new string,
+            properly formatted for JSON compliance and bounded by double-quotes.
+            </summary>
+            <param name="text">string to be evaluated</param>
+            <returns>new string, in JSON-compliant form</returns>
+        </member>
+        <member name="T:JSONSharp.Collections.JSONArrayCollection">
+            <summary>
+            JSONArrayCollection is an ordered collection of values. An array begins with 
+            "[" (left bracket) and ends with "]" (right bracket). Array elements are 
+            separated by "," (comma).
+            </summary>
+        </member>
+        <member name="F:JSONSharp.Collections.JSONArrayCollection._values">
+            <summary>
+            Internal generic list of JSONValue objects that comprise the elements
+            of the JSONArrayCollection.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONArrayCollection.#ctor(System.Collections.Generic.List{JSONSharp.JSONValue})">
+            <summary>
+            Public constructor that accepts a generic list of JSONValue objects.
+            </summary>
+            <param name="values">Generic list of JSONValue objects.</param>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONArrayCollection.#ctor">
+            <summary>
+            Empty public constructor. Use this method in conjunction with
+            the Add method to populate the internal array of elements.
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONArrayCollection.Add(JSONSharp.JSONValue)">
+            <summary>
+            Adds a JSONValue to the internal object array.  Values are checked to 
+            ensure no duplication occurs in the internal array.
+            </summary>
+            <param name="value">JSONValue to add to the internal array</param>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONArrayCollection.CollectionToPrettyPrint">
+            <summary>
+            Required override of the CollectionToPrettyPrint() method.
+            </summary>
+            <returns>the entire collection as a string in JSON-compliant format, with indentation for readability</returns>
+        </member>
+        <member name="M:JSONSharp.Collections.JSONArrayCollection.CollectionToString">
+            <summary>
+            Required override of the CollectionToString() method.
+            </summary>
+            <returns>the entire collection as a string in JSON-compliant format</returns>
+        </member>
+        <member name="P:JSONSharp.Collections.JSONArrayCollection.BeginMarker">
+            <summary>
+            Required override of the BeginMarker property
+            </summary>
+        </member>
+        <member name="P:JSONSharp.Collections.JSONArrayCollection.EndMarker">
+            <summary>
+            Required override of the EndMarker property
+            </summary>
+        </member>
+        <member name="T:JSONSharp.Values.JSONNumberValue">
+            <summary>
+            JSONNumberValue is very much like a C# number, except that octal and hexadecimal formats 
+            are not used.
+            </summary>
+        </member>
+        <member name="F:JSONSharp.Values.JSONNumberValue.JavaScriptNumberFormatInfo">
+            <summary>
+            Number formatting object for handling globalization differences with decimal point separators
+            </summary>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.#ctor(System.Int32)">
+            <summary>
+            Public constructor that accepts a value of type int
+            </summary>
+            <param name="value">int (System.Int32) value</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.#ctor(System.Double)">
+            <summary>
+            Public constructor that accepts a value of type double
+            </summary>
+            <param name="value">double (System.Double) value</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.#ctor(System.Decimal)">
+            <summary>
+            Public constructor that accepts a value of type decimal
+            </summary>
+            <param name="value">decimal (System.Decimal) value</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.#ctor(System.Single)">
+            <summary>
+            Public constructor that accepts a value of type single
+            </summary>
+            <param name="value">single (System.Single) value</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.#ctor(System.Byte)">
+            <summary>
+            Public constructor that accepts a value of type byte
+            </summary>
+            <param name="value">byte (System.Byte) value</param>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.ToString">
+            <summary>
+            Required override of ToString() method.
+            </summary>
+            <returns>contained numeric value, rendered as a string</returns>
+        </member>
+        <member name="M:JSONSharp.Values.JSONNumberValue.PrettyPrint">
+            <summary>
+            Required override of the PrettyPrint() method.
+            </summary>
+            <returns>this.ToString()</returns>
+        </member>
+        <member name="T:JSONSharp.JSONReflector">
+            <summary>
+            JSONReflector provides a convenient way to convert value and reference type objects
+            to JSON format through reflection.
+            
+            This implementation build JSON around reflected public properties of type int, float,
+            double, decimal, byte, string, bool, enum or array.  (Generics and other types may be
+            supported at a later time.)
+            </summary>
+        </member>
+        <member name="M:JSONSharp.JSONReflector.#ctor(System.Object)">
+            <summary>
+            Public constructor that accepts any object
+            </summary>
+            <param name="objValue">object to be reflected/evaluated for JSON conversion</param>
+        </member>
+        <member name="M:JSONSharp.JSONReflector.ToString">
+            <summary>
+            Required override of the ToString() method.
+            </summary>
+            <returns>returns the internal JSONObjectCollection ToString() method</returns>
+        </member>
+        <member name="M:JSONSharp.JSONReflector.PrettyPrint">
+            <summary>
+            Required override of the PrettyPrint() method.
+            </summary>
+            <returns>returns the internal JSONObjectCollection PrettyPrint() method</returns>
+        </member>
+    </members>
+</doc>
