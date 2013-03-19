@@ -20,6 +20,13 @@ namespace Hakase.Uchuu
             set;
         }
 
+        [JsonProperty("specialRooms")]
+        public IDictionary<string, int> SpecialRooms
+        {
+            get;
+            set;
+        }
+
         [JsonProperty("rooms")]
         public IList<Room> Rooms
         {
@@ -33,10 +40,14 @@ namespace Hakase.Uchuu
 
         }
 
-        public Map(string tileSet, int gridSize, IList<Room> rooms)
+        //
+        // Add the dictionary to the constructor
+        //
+        public Map(string tileSet, int gridSize, IDictionary<string, int> specialRooms, IList<Room> rooms)
         {
             this.TileSet = tileSet;
             this.GridSize = gridSize;
+            this.SpecialRooms = specialRooms ?? new Dictionary<string, int>();
             this.Rooms = rooms ?? new List<Room>();
         }
     }

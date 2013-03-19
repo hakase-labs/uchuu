@@ -17,6 +17,8 @@ namespace Hakase.Uchuu
         private int id;
         private int x;
         private int y;
+        private int heroSpawnX;
+        private int heroSpawnY;
         private int width;
         private int height;
 
@@ -55,6 +57,28 @@ namespace Hakase.Uchuu
             {
                 y = value;
                 OnPropertyChanged("Y");
+            }
+        }
+
+        [JsonProperty("heroSpawnX")]
+        public int HeroSpawnX
+        {
+            get { return heroSpawnX; }
+            set
+            {
+                heroSpawnX = value;
+                OnPropertyChanged("HeroSpawnX");
+            }
+        }
+
+        [JsonProperty("heroSpawnY")]
+        public int HeroSpawnY
+        {
+            get { return heroSpawnY; }
+            set
+            {
+                heroSpawnY = value;
+                OnPropertyChanged("HeroSpawnY");
             }
         }
 
