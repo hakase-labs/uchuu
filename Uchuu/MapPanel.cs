@@ -273,6 +273,18 @@ namespace Hakase.Uchuu
                     // attributeGraphics.FillRectangle(new SolidBrush(Color.FromArgb(64, 0, 255, 0)), destRect);
                     attributeGraphics.DrawImage(attributeImage, destRect, new Rectangle(48, 0, 16, 16), GraphicsUnit.Pixel);
                 }
+
+                if (tileAttribute.HasFlag(Tile.Attribute.Water))
+                {
+                    // attributeGraphics.FillRectangle(new SolidBrush(Color.FromArgb(64, 0, 255, 0)), destRect);
+                    attributeGraphics.DrawImage(attributeImage, destRect, new Rectangle(64, 0, 16, 16), GraphicsUnit.Pixel);
+                }
+
+                if (tileAttribute.HasFlag(Tile.Attribute.Abyss))
+                {
+                    // attributeGraphics.FillRectangle(new SolidBrush(Color.FromArgb(64, 0, 255, 0)), destRect);
+                    attributeGraphics.DrawImage(attributeImage, destRect, new Rectangle(80, 0, 16, 16), GraphicsUnit.Pixel);
+                }
             }
         }
 
