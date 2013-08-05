@@ -16,7 +16,8 @@ namespace Hakase.Uchuu
             Abyss = (1 << 4),
             FlipHorizontal = (1 << 5),
             FlipVertical = (1 << 6),
-            RotateBy90 = (1 << 7) 
+            RotateBy90 = (1 << 7),
+            Water = (1 << 8)
         };
 
         [JsonProperty("x")]

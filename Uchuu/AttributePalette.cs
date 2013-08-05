@@ -46,6 +46,9 @@ namespace Hakase.Uchuu
 
             abyssAttrbitueCheckbox.CheckedChanged += new EventHandler(HandleAttributeSelection);
             abyssAttrbitueCheckbox.Tag = Tile.Attribute.Abyss;
+
+            waterAttrbitueCheckbox.CheckedChanged += new EventHandler(HandleAttributeSelection);
+            waterAttrbitueCheckbox.Tag = Tile.Attribute.Water;
         }
 
         private void HandleAttributeSelection(object sender, EventArgs e)
