@@ -34,6 +34,7 @@
             this.spikeAttributeCheckbox = new System.Windows.Forms.CheckBox();
             this.abyssAttrbitueCheckbox = new System.Windows.Forms.CheckBox();
             this.attributeValueLabel = new System.Windows.Forms.Label();
+            this.waterAttrbitueCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // solidAttributeCheckbox
@@ -92,8 +93,18 @@
             this.attributeValueLabel.Location = new System.Drawing.Point(12, 240);
             this.attributeValueLabel.Name = "attributeValueLabel";
             this.attributeValueLabel.Size = new System.Drawing.Size(46, 13);
-            this.attributeValueLabel.TabIndex = 5;
+            this.attributeValueLabel.TabIndex = 6;
             this.attributeValueLabel.Text = "Value: 0";
+            // 
+            // waterAttrbitueCheckbox
+            // 
+            this.waterAttrbitueCheckbox.AutoSize = true;
+            this.waterAttrbitueCheckbox.Location = new System.Drawing.Point(12, 125);
+            this.waterAttrbitueCheckbox.Name = "waterAttrbitueCheckbox";
+            this.waterAttrbitueCheckbox.Size = new System.Drawing.Size(66, 17);
+            this.waterAttrbitueCheckbox.TabIndex = 5;
+            this.waterAttrbitueCheckbox.Text = "WATER";
+            this.waterAttrbitueCheckbox.UseVisualStyleBackColor = true;
             // 
             // AttributePalette
             // 
@@ -101,6 +112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(115, 262);
             this.ControlBox = false;
+            this.Controls.Add(this.waterAttrbitueCheckbox);
             this.Controls.Add(this.attributeValueLabel);
             this.Controls.Add(this.abyssAttrbitueCheckbox);
             this.Controls.Add(this.spikeAttributeCheckbox);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.CheckBox spikeAttributeCheckbox;
         private System.Windows.Forms.CheckBox abyssAttrbitueCheckbox;
         private System.Windows.Forms.Label attributeValueLabel;
+        private System.Windows.Forms.CheckBox waterAttrbitueCheckbox;
     }
 }
