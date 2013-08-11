@@ -760,6 +760,22 @@ namespace Hakase.Uchuu
             }
         }
 
+        private void SetShowCameraBounds(bool showCameraBounds)
+        {
+            var mapPanelControls = this.gridPanel.Controls;
+
+            foreach (Control control in mapPanelControls)
+            {
+                var mapPanelControl = control as MapPanel;
+
+                if (mapPanelControl != null)
+                {
+                    mapPanelControl.ShowCameraBounds = showCameraBounds;
+                    mapPanelControl.Refresh();
+                }
+            }
+        }
+
         private void addRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var result = createRoomDialog.ShowDialog();
@@ -781,6 +797,16 @@ namespace Hakase.Uchuu
                         this.gridPanel.Controls.Add(newPanel);
                     }
                 }
+            }
+        }
+
+        private void cameraBoundsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+
+            if (item != null)
+            {
+                SetShowCameraBounds(item.Checked);
             }
         }
     }

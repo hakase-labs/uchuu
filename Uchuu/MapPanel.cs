@@ -96,6 +96,12 @@ namespace Hakase.Uchuu
             set;
         }
 
+        public bool ShowCameraBounds
+        {
+            get;
+            set;
+        }
+
         public Map Map
         {
             get
@@ -332,6 +338,38 @@ namespace Hakase.Uchuu
                     if (ShowAttributes)
                     {
                         g.DrawImage(this.renderedAttributeMap, new Point(0, 0));
+                    }
+
+                    if (ShowCameraBounds)
+                    {
+                        int outlineWidth = 2;
+
+                        using (var pen = new Pen(Color.FromArgb(196, Color.Yellow), (float)outlineWidth))
+                        {
+                            g.DrawRectangle(
+                                pen,
+                                Map.GridSize * Room.CameraBounds.X + 1,     // Offset due to the way Pen works
+                                Map.GridSize * Room.CameraBounds.Y + 1,     // it tries to center the line width
+                                Map.GridSize * Room.CameraBounds.Width - 1, // so we just offset by half of the
+                                Map.GridSize * Room.CameraBounds.Height - 1 // width in both directions
+                            );
+                        }
+                    }
+
+                    if (Selected)
+                    {
+                        int outlineWidth = 8;
+
+                        using (var pen = new Pen(Color.FromArgb(128, Color.Fuchsia), (float)outlineWidth))
+                        {
+                            g.DrawRectangle(
+                                pen,
+                                0,
+                                0,
+                                (Map.GridSize * Room.Width),
+                                (Map.GridSize * Room.Height)
+                            );
+                        }
                     }
                 }
                 
