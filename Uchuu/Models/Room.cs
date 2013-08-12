@@ -60,7 +60,7 @@ namespace Hakase.Uchuu
             }
         }
 
-        [JsonProperty("heroSpawnX")]
+        [JsonProperty("heroSpawnX", NullValueHandling = NullValueHandling.Ignore)]
         public int HeroSpawnX
         {
             get { return heroSpawnX; }
@@ -71,7 +71,7 @@ namespace Hakase.Uchuu
             }
         }
 
-        [JsonProperty("heroSpawnY")]
+        [JsonProperty("heroSpawnY", NullValueHandling = NullValueHandling.Ignore)]
         public int HeroSpawnY
         {
             get { return heroSpawnY; }

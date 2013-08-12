@@ -46,7 +46,13 @@
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.previewBox = new System.Windows.Forms.GroupBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.selectButton = new System.Windows.Forms.ToolStripButton();
+            this.moveButton = new System.Windows.Forms.ToolStripButton();
+            this.pencilButton = new System.Windows.Forms.ToolStripButton();
+            this.fillButton = new System.Windows.Forms.ToolStripButton();
             this.scrollingWorkspacePanel = new System.Windows.Forms.Panel();
+            this.gridPanel = new System.Windows.Forms.Panel();
+            this.tileLocationPanel = new System.Windows.Forms.Panel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.localLocationTilesLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.worldLocationTilesLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,12 +60,8 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.selectButton = new System.Windows.Forms.ToolStripButton();
-            this.moveButton = new System.Windows.Forms.ToolStripButton();
-            this.pencilButton = new System.Windows.Forms.ToolStripButton();
-            this.fillButton = new System.Windows.Forms.ToolStripButton();
-            this.gridPanel = new System.Windows.Forms.Panel();
-            this.tileLocationPanel = new System.Windows.Forms.Panel();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cameraBoundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previewTileControl = new Hakase.Uchuu.TileControl();
             this.tileSetPanel1 = new Hakase.Uchuu.TileSetPanel();
             this.menuStrip.SuspendLayout();
@@ -70,8 +72,8 @@
             this.previewBox.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.scrollingWorkspacePanel.SuspendLayout();
-            this.statusStrip.SuspendLayout();
             this.gridPanel.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -79,6 +81,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.modeToolStripMenuItem,
             this.mapToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -250,6 +253,50 @@
             this.toolStrip.Text = "toolStrip1";
             this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
             // 
+            // selectButton
+            // 
+            this.selectButton.CheckOnClick = true;
+            this.selectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.selectButton.Image = ((System.Drawing.Image)(resources.GetObject("selectButton.Image")));
+            this.selectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(42, 22);
+            this.selectButton.Tag = "selector";
+            this.selectButton.Text = "Select";
+            // 
+            // moveButton
+            // 
+            this.moveButton.CheckOnClick = true;
+            this.moveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.moveButton.Image = ((System.Drawing.Image)(resources.GetObject("moveButton.Image")));
+            this.moveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveButton.Name = "moveButton";
+            this.moveButton.Size = new System.Drawing.Size(41, 22);
+            this.moveButton.Tag = "mover";
+            this.moveButton.Text = "Move";
+            // 
+            // pencilButton
+            // 
+            this.pencilButton.CheckOnClick = true;
+            this.pencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.pencilButton.Image = ((System.Drawing.Image)(resources.GetObject("pencilButton.Image")));
+            this.pencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.pencilButton.Name = "pencilButton";
+            this.pencilButton.Size = new System.Drawing.Size(43, 22);
+            this.pencilButton.Tag = "pencil";
+            this.pencilButton.Text = "Pencil";
+            // 
+            // fillButton
+            // 
+            this.fillButton.CheckOnClick = true;
+            this.fillButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillButton.Image = ((System.Drawing.Image)(resources.GetObject("fillButton.Image")));
+            this.fillButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.fillButton.Name = "fillButton";
+            this.fillButton.Size = new System.Drawing.Size(26, 22);
+            this.fillButton.Tag = "fill";
+            this.fillButton.Text = "Fill";
+            // 
             // scrollingWorkspacePanel
             // 
             this.scrollingWorkspacePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -261,8 +308,29 @@
             this.scrollingWorkspacePanel.Location = new System.Drawing.Point(0, 28);
             this.scrollingWorkspacePanel.Margin = new System.Windows.Forms.Padding(0);
             this.scrollingWorkspacePanel.Name = "scrollingWorkspacePanel";
-            this.scrollingWorkspacePanel.Size = new System.Drawing.Size(704, 507);
+            this.scrollingWorkspacePanel.Size = new System.Drawing.Size(692, 507);
             this.scrollingWorkspacePanel.TabIndex = 3;
+            // 
+            // gridPanel
+            // 
+            this.gridPanel.AutoSize = true;
+            this.gridPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.gridPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridPanel.Controls.Add(this.tileLocationPanel);
+            this.gridPanel.Location = new System.Drawing.Point(0, 0);
+            this.gridPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.gridPanel.Name = "gridPanel";
+            this.gridPanel.Size = new System.Drawing.Size(685, 489);
+            this.gridPanel.TabIndex = 2;
+            // 
+            // tileLocationPanel
+            // 
+            this.tileLocationPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.tileLocationPanel.Location = new System.Drawing.Point(3, 3);
+            this.tileLocationPanel.Name = "tileLocationPanel";
+            this.tileLocationPanel.Size = new System.Drawing.Size(16, 16);
+            this.tileLocationPanel.TabIndex = 4;
+            this.tileLocationPanel.Visible = false;
             // 
             // statusStrip
             // 
@@ -308,70 +376,21 @@
             this.propertyGrid1.Size = new System.Drawing.Size(173, 535);
             this.propertyGrid1.TabIndex = 3;
             // 
-            // selectButton
+            // viewToolStripMenuItem
             // 
-            this.selectButton.CheckOnClick = true;
-            this.selectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.selectButton.Image = ((System.Drawing.Image)(resources.GetObject("selectButton.Image")));
-            this.selectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(42, 22);
-            this.selectButton.Tag = "selector";
-            this.selectButton.Text = "Select";
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cameraBoundsToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
             // 
-            // moveButton
+            // cameraBoundsToolStripMenuItem
             // 
-            this.moveButton.CheckOnClick = true;
-            this.moveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.moveButton.Image = ((System.Drawing.Image)(resources.GetObject("moveButton.Image")));
-            this.moveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.moveButton.Name = "moveButton";
-            this.moveButton.Size = new System.Drawing.Size(41, 22);
-            this.moveButton.Tag = "mover";
-            this.moveButton.Text = "Move";
-            // 
-            // pencilButton
-            // 
-            this.pencilButton.CheckOnClick = true;
-            this.pencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.pencilButton.Image = ((System.Drawing.Image)(resources.GetObject("pencilButton.Image")));
-            this.pencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.pencilButton.Name = "pencilButton";
-            this.pencilButton.Size = new System.Drawing.Size(43, 22);
-            this.pencilButton.Tag = "pencil";
-            this.pencilButton.Text = "Pencil";
-            // 
-            // fillButton
-            // 
-            this.fillButton.CheckOnClick = true;
-            this.fillButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillButton.Image = ((System.Drawing.Image)(resources.GetObject("fillButton.Image")));
-            this.fillButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.fillButton.Name = "fillButton";
-            this.fillButton.Size = new System.Drawing.Size(26, 22);
-            this.fillButton.Tag = "fill";
-            this.fillButton.Text = "Fill";
-            // 
-            // gridPanel
-            // 
-            this.gridPanel.AutoSize = true;
-            this.gridPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.gridPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridPanel.Controls.Add(this.tileLocationPanel);
-            this.gridPanel.Location = new System.Drawing.Point(0, 0);
-            this.gridPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.gridPanel.Name = "gridPanel";
-            this.gridPanel.Size = new System.Drawing.Size(685, 489);
-            this.gridPanel.TabIndex = 2;
-            // 
-            // tileLocationPanel
-            // 
-            this.tileLocationPanel.BackColor = System.Drawing.SystemColors.Window;
-            this.tileLocationPanel.Location = new System.Drawing.Point(3, 3);
-            this.tileLocationPanel.Name = "tileLocationPanel";
-            this.tileLocationPanel.Size = new System.Drawing.Size(16, 16);
-            this.tileLocationPanel.TabIndex = 4;
-            this.tileLocationPanel.Visible = false;
+            this.cameraBoundsToolStripMenuItem.CheckOnClick = true;
+            this.cameraBoundsToolStripMenuItem.Name = "cameraBoundsToolStripMenuItem";
+            this.cameraBoundsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.cameraBoundsToolStripMenuItem.Text = "Camera Bounds";
+            this.cameraBoundsToolStripMenuItem.Click += new System.EventHandler(this.cameraBoundsToolStripMenuItem_Click);
             // 
             // previewTileControl
             // 
@@ -430,9 +449,9 @@
             this.toolStrip.PerformLayout();
             this.scrollingWorkspacePanel.ResumeLayout(false);
             this.scrollingWorkspacePanel.PerformLayout();
+            this.gridPanel.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.gridPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,6 +492,8 @@
         private System.Windows.Forms.ToolStripButton pencilButton;
         private System.Windows.Forms.ToolStripButton fillButton;
         private System.Windows.Forms.Panel scrollingWorkspacePanel;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cameraBoundsToolStripMenuItem;
     }
 }
 
